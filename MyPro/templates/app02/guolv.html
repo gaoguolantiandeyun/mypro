@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>时间为 : {{ timer|date:"Y-m-d" }}</p>
+<p>书籍列表 : {{ booklst }}</p>
+<p>空书籍列表 : {{ booklst1|default:"没有默认书籍" }}</p>
+<p>书籍列表长度 : {{ booklst|length }}</p>
+<p>书籍列表切片: {{ booklst|slice:"1:-1" }}</p>
+<p>数字处理: {{ numb|add:10 }}</p>
+<p>文件大小: {{ file_size|filesizeformat }}</p>
+<p>诗词显示: {{ shici1|truncatewords:5 }}</p>
+<p>安全的标签: {{ tag|safe }}</p>
+<hr>
+{#标签#}
+{% if numb > 100 or numb < 0 %}
+    <p>该数字无效</p>
+{% elif numb > 60 or numb < 100 %}
+    <p>勉强凑合吧</p>
+{% else %}
+    <p>不及格</p>
+{% endif %}
+{#-------------------------------------------#}
+{% for i in booklst %}
+    <p>{{ forloop.counter }}----{{ i }}</p>
+{#    <p>{{ forloop.counter0 }}----{{ i }}</p>#}
+{#    <p>{{ forloop.revcounter0 }}----{{ i }}</p>#}
+{#    <p>{{ forloop.counter0 }}--{{ forloop.last }}--{{ i }}</p>#}
+{% endfor %}
+{#--------------------------------------------#}
+{% for i,j in dic.items %}
+    <p>{{ i }}: {{ j }}</p>
+{% endfor %}
+{#------------------------------------------------#}
+{% for i in booklst %}
+    {% if i == "泰勒斯威夫特" %}
+        <p>泰勒斯威夫特就是霉霉哦</p>
+    {% endif %}
+{% endfor %}
+{#--------------------------------------------------#}
+{% for i in booklst %}
+    {% if i == "丫丫" %}
+        <p>佟丽娅</p>
+    {% endif %}
+{% endfor %}
+
+
+
+
+
+
+</body>
+</html>
